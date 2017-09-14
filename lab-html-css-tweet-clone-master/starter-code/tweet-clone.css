@@ -1,0 +1,59 @@
+body {
+  background-color: rgb(244, 248, 249);
+  font-family: 'Helvetica';
+}
+
+p {
+  font-size: 2rem;
+}
+
+.inline {
+  display: inline;
+  margin: 0px 2px;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.margin-right {
+  margin-right: 5%;
+}
+
+.margin-left {
+  margin-left: 3%;
+}
+
+.grey-text {
+  color: rgb(101, 116, 127);
+}
+
+#tweet {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(225, 232, 237);
+  border-radius: 10px;
+  width: 700px;
+  padding: 3%;
+  margin: 10% auto;
+  display: block;
+}
+
+.user-account {
+  margin-top: 5px;
+  margin-bottom: 0;
+  color: rgb(104, 109, 129);
+}
+
+#follow-btn {
+  display: inline-block;
+  float: right;
+  color: rgb(85, 172, 238);
+  border: 2px solid rgb(85, 172, 238);
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.twitter-logo {
+  float: left;
+}
