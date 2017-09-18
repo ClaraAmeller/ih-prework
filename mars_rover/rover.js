@@ -1,6 +1,15 @@
-var myRover = {
+var rover1 = {
+  name: 'Rover One',
   position: [0,0],
-  direction: 'N'
+  direction: 'N',
+  marker: '1'
+};
+
+var rover2 = {
+  name: 'Rover Two',
+  position: [9,9],
+  direction: 'S',
+  marker: '2'
 };
 
 function goForward(rover) {
@@ -19,7 +28,7 @@ function goForward(rover) {
       break;
   };
   sphere(rover);
-  console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]");
+  console.log("New " + rover.name + " Position: [" + rover.position[0] + ", " + rover.position[1] + "]");
   return findObstacles(rover);
 }
 
@@ -39,24 +48,26 @@ function goBackward(rover) {
       break;
   };
   sphere(rover);
-  console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]")
+  console.log("New " + rover.name + " Position: [" + rover.position[0] + ", " + rover.position[1] + "]")
   return findObstacles(rover);
 }
 
 function turnLeft(rover) {
   rover.direction = "W";
   findObstacles(rover);
-  console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]")
+  console.log("New " + rover.name + " Position: [" + rover.position[0] + ", " + rover.position[1] + "]")
 }
 
 function turnRight(rover) {
   rover.direction = "E";
   findObstacles(rover);
-  console.log("New Rover Position: [" + rover.position[0] + ", " + rover.position[1] + "]")
+  console.log("New " + rover.name + " Position: [" + rover.position[0] + ", " + rover.position[1] + "]")
 }
 
 function createGrid() {
-  console.log("--- Rover Starting Position: [" + myRover.position[0] + ", " + myRover.position[1] + "] ---");
+  console.log("--- Rover " + rover1.name + " Starting Position: [" + rover1.position[0] + ", " + rover1.position[1] + "], " + rover1.direction + " ---");
+  console.log("--- Rover " + rover2.name + " Starting Position: [" + rover2.position[0] + ", " + rover2.position[1] + "], " + rover2.direction + " ---");
+
   var grid = [];
   for (var i = 0; i < 10; i++) {
     var columns = [];
@@ -65,10 +76,11 @@ function createGrid() {
     }
     grid[i] = columns;
   }
-  for (var obstacles = 0; obstacles < Math.floor((Math.random() * 5) + 1); obstacles++) { // Maximum of 4 obstacles
-    grid[Math.floor((Math.random() * 9) + 1)][Math.floor((Math.random() * 9) + 1)] = '1';
+  for (var obstacles = 0; obstacles < Math.floor((Math.random() * 5) + 1); obstacles++) {
+    grid[Math.floor((Math.random() * 9) + 1)][Math.floor((Math.random() * 9) + 1)] = '?';
   }
-  grid[0][0] = '#';
+  grid[rover1.position[0]][rover1.position[1]] = '#';
+  grid[rover2.position[0]][rover2.position[1]] = '#';
   return grid.reverse();
 }
 
@@ -82,17 +94,20 @@ function sphere(rover) {
 function findObstacles(rover) {
   for (var i = 0; i < mars.length; i++) {
     for (var j = 0; j < mars[i].length; j++) {
-      if (mars[rover.position[0]][rover.position[1]] === '1') {
+      if (mars[rover.position[0]][rover.position[1]] === '?') {
         console.log("Oh oh. There's an obstacle, Nasa!");
-        mars[rover.position[0]][rover.position[1]] = '!';
-        console.log(mars);
+        console.log(mars.reverse());
         return true;
-      } else if (mars[i][j] === '*') {
+      } else if (JSON.stringify(rover1.position) === JSON.stringify(rover2.position)) {
+        console.log("Oh oh. A collision!");
+        console.log(mars.reverse());
+        return true;
+      } else if (mars[i][j] === rover.marker) {
         mars[i][j] = '+';
       }
     }
   }
-  mars[rover.position[0]][rover.position[1]] = '*';
+  mars[rover.position[0]][rover.position[1]] = rover.marker;
 }
 
 function moveRover(commands, rover, mars) {
@@ -120,4 +135,5 @@ function moveRover(commands, rover, mars) {
 
 ////////////////////////////////////////////////////////////////////////////////
 var mars = createGrid();
-moveRover('ffflffbf', myRover, mars.reverse());
+moveRover('ffflffbf', rover1, mars.reverse());
+moveRover('ffflffbf', rover2, mars.reverse());
