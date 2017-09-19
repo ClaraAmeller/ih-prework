@@ -1,11 +1,11 @@
-var rover1 = {
+var myRover1 = {
   name: 'Rover One',
   position: [0,0],
   direction: 'N',
   marker: '1'
 };
 
-var rover2 = {
+var myRover2 = {
   name: 'Rover Two',
   position: [9,9],
   direction: 'S',
@@ -65,9 +65,6 @@ function turnRight(rover) {
 }
 
 function createGrid() {
-  console.log("--- Rover " + rover1.name + " Starting Position: [" + rover1.position[0] + ", " + rover1.position[1] + "], " + rover1.direction + " ---");
-  console.log("--- Rover " + rover2.name + " Starting Position: [" + rover2.position[0] + ", " + rover2.position[1] + "], " + rover2.direction + " ---");
-
   var grid = [];
   for (var i = 0; i < 10; i++) {
     var columns = [];
@@ -79,8 +76,8 @@ function createGrid() {
   for (var obstacles = 0; obstacles < Math.floor((Math.random() * 5) + 1); obstacles++) {
     grid[Math.floor((Math.random() * 9) + 1)][Math.floor((Math.random() * 9) + 1)] = '?';
   }
-  grid[rover1.position[0]][rover1.position[1]] = '#';
-  grid[rover2.position[0]][rover2.position[1]] = '#';
+  grid[myRover1.position[0]][myRover1.position[1]] = '#';
+  grid[myRover2.position[0]][myRover2.position[1]] = '#';
   return grid.reverse();
 }
 
@@ -98,7 +95,7 @@ function findObstacles(rover) {
         console.log("Oh oh. There's an obstacle, Nasa!");
         console.log(mars.reverse());
         return true;
-      } else if (JSON.stringify(rover1.position) === JSON.stringify(rover2.position)) {
+      } else if (JSON.stringify(myRover1.position) === JSON.stringify(myRover2.position)) {
         console.log("Oh oh. A collision!");
         console.log(mars.reverse());
         return true;
@@ -111,6 +108,7 @@ function findObstacles(rover) {
 }
 
 function moveRover(commands, rover, mars) {
+  console.log("--- Rover " + rover.name + " Starting Position: [" + rover.position[0] + ", " + rover.position[1] + "], " + rover.direction + " ---");
   for (var i = 0; i < commands.length; i++) {
     console.log(commands[i]);
     switch(commands[i]) {
@@ -135,5 +133,5 @@ function moveRover(commands, rover, mars) {
 
 ////////////////////////////////////////////////////////////////////////////////
 var mars = createGrid();
-moveRover('ffflffbf', rover1, mars.reverse());
-moveRover('ffflffbf', rover2, mars.reverse());
+moveRover('ffflffbf', myRover1, mars.reverse());
+moveRover('ffflffbf', myRover2, mars.reverse());
