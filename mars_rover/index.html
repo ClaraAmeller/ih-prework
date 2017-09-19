@@ -1,37 +1,48 @@
 <html>
+
 <head>
-	<title>Mars Rover Kata!</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-	<link rel="stylesheet" href="style.css">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Oswald|Patrick+Hand+SC|Permanent+Marker|Roboto+Mono|Shadows+Into+Light+Two|Source+Code+Pro" rel="stylesheet"></head>
-	<script src="rover.js"></script>
+    <title>Mars Rover Kata!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Oswald|Patrick+Hand+SC|Permanent+Marker|Roboto+Mono|Shadows+Into+Light+Two|Source+Code+Pro" rel="stylesheet">
+</head>
+<script src="rover.js"></script>
+
 <body>
-	<div class="container-fluid py-4">
-		<h1 class="text-center">Mars Rover Kata</h1>
-		<h3 class="text-center">Clara Ameller</h3>
+    <div class="container py-4">
+      <div class="text-center">
+        <h1>Mars Rover Kata</h1>
+        <h3>Clara Ameller</h3>
+      </div>
 
-		<h2 class="mt-5 ml-5 mr-5">Explanation</h2>
-		<ol class="ml-5">
-			<li>The symbol # is for the rovers starting position</li>
-			<li>Every step done is marked by +</li>
-			<li>The actuals positions are 1 and 2 for the first and second rover, respectively</li>
-			<li>Every obstacle is marked by a ?</li>
-		</ol>
+        <h2 class="mt-5 ml-5 mr-5">Explanation</h2>
+        <ol class="ml-5">
+            <li>The symbol # is for the rovers starting position</li>
+            <li>Every step done is marked by +</li>
+            <li>The actuals positions are 1 and 2 for the first and second rover, respectively</li>
+            <li>Every obstacle is marked by a ?</li>
+        </ol>
 
-		<h2 class="mt-5 mx-5">How it's done</h2>
-		<ol class="mx-5">
-			<li>The game is based on a 10x10 grid with random obstacles, at <strong>createGrid()</strong></li>
-			<li>There are two objects: <strong>myRover1</strong> and <strong>myRover2</strong> with <i>name</i>, <i>position</i>, <i>direction</i> and <i>marker</i> as properties</li>
-			<li>They can <strong>goForward()</strong>, <strong>goBackward()</strong>, <strong>turnLeft()</strong> and <strong>turnRight()</strong></li>
-			<li>Each of these functions call <strong>sphere()</strong> and <strong>findObstacles()</strong></li>
-			<li><strong>sphere()</strong> checks if the new position would go off the grid. If so, it changes the position to the last/first of the grid</li>
-			<li><strong>findObstacles()</strong> checks if the new position would go on an obstacle or collide with another rover. If so, it sends a personalized message to Nasa and stops moving</li>
-			<li>All this is done in the function <strong>moveRover()</strong> which takes the string with the commands, the rover itself and the grid which on is moving</li>
-		</ol>
-	</div>
+        <h2 class="mt-5 mx-5">How it's done</h2>
+        <ol class="mx-5">
+            <li>The game is based on a 10x10 grid with random obstacles, at <strong>createGrid()</strong></li>
+            <li>There are two objects: <strong>myRover1</strong> and <strong>myRover2</strong> with <i>name</i>, <i>position</i>, <i>direction</i> and <i>marker</i> as properties</li>
+            <li>They can <strong>goForward()</strong>, <strong>goBackward()</strong>, <strong>turnLeft()</strong> and <strong>turnRight()</strong></li>
+            <li>Each of these functions call <strong>sphere()</strong> and <strong>findObstacles()</strong></li>
+            <li><strong>sphere()</strong> checks if the new position would go off the grid. If so, it changes the position to the last/first of the grid</li>
+            <li><strong>findObstacles()</strong> checks if the new position would go on an obstacle or collide with another rover. If so, it sends a personalized message to Nasa and stops moving</li>
+            <li>All of this is done in the function <strong>moveRover()</strong> which takes the string with the commands, the rover itself and the grid which on is moving</li>
+        </ol>
 
-	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+        <h2 class="mt-5 mx-5">/*Comment*/</h2>
+        <p class="mx-5">
+          I built this having the [0, 0] coordinates on the bottom-left side of the grid, just like an xy chart<br /> For that, I used the <strong>reverse()</strong> method on the grid. I admit it might be a little confusing
+        </p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script> -->
 </body>
+
 </html>

@@ -119,10 +119,10 @@ function moveRover(commands, rover, mars) {
         if (goBackward(rover)) { return };
         break;
       case 'r':
-        if (turnRight(rover)) { return };
+        turnRight(rover);
         break;
       case 'l':
-        if (turnLeft(rover)) { return };
+        turnLeft(rover);
         break;
       default:
         alert("That direction doesn't exist!");
