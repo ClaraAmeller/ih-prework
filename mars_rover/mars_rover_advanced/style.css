@@ -1,0 +1,12 @@
+body {
+  background-image: url('https://www.toptal.com/designers/subtlepatterns/patterns/stardust.png');
+  color: white;
+}
+
+h1, h3, h6 {
+  font-family: 'Oswald';
+}
+
+h2, ol, p {
+  font-family: 'Source Code Pro';
+}
