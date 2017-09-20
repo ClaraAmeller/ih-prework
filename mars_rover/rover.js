@@ -157,5 +157,5 @@ function moveRover(commands, rover, mars) {
 
 ////////////////////////////////////////////////////////////////////////////////
 var mars = createGrid();
-moveRover('brflff', myRover1, mars.reverse());
-// moveRover('ffflffbf', myRover2, mars.reverse());
+moveRover('ffflffbf', myRover1, mars.reverse());
+moveRover('ffflffbf', myRover2, mars.reverse());
