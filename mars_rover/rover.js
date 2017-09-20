@@ -53,14 +53,38 @@ function goBackward(rover) {
 }
 
 function turnLeft(rover) {
-  rover.direction = "W";
-  findObstacles(rover);
+  switch(rover.direction) {
+    case 'N':
+      rover.direction = 'W';
+      break;
+    case 'E':
+      rover.direction = 'N';
+      break;
+    case 'S':
+      rover.direction = 'E';
+      break;
+    case 'W':
+      rover.direction = 'S';
+      break;
+  };
   console.log("New " + rover.name + " Position: [" + rover.position[0] + ", " + rover.position[1] + "]")
 }
 
 function turnRight(rover) {
-  rover.direction = "E";
-  findObstacles(rover);
+  switch(rover.direction) {
+    case 'N':
+      rover.direction = 'E';
+      break;
+    case 'E':
+      rover.direction = 'S';
+      break;
+    case 'S':
+      rover.direction = 'W';
+      break;
+    case 'W':
+      rover.direction = 'N';
+      break;
+  };
   console.log("New " + rover.name + " Position: [" + rover.position[0] + ", " + rover.position[1] + "]")
 }
 
@@ -133,5 +157,5 @@ function moveRover(commands, rover, mars) {
 
 ////////////////////////////////////////////////////////////////////////////////
 var mars = createGrid();
-moveRover('ffflffbf', myRover1, mars.reverse());
-moveRover('ffflffbf', myRover2, mars.reverse());
+moveRover('brflff', myRover1, mars.reverse());
+// moveRover('ffflffbf', myRover2, mars.reverse());
