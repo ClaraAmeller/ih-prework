@@ -59,7 +59,6 @@ body {
 }
 
 #follow-btn {
-  display: inline-block;
   float: right;
   color: rgb(85, 172, 238);
   border: 2px solid rgb(85, 172, 238);
